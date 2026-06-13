@@ -1,0 +1,57 @@
+flowchart TD
+    subgraph Legend [图例]
+        direction LR
+        L1(开始/结束)
+        L2(处理步骤)
+        L3(数据/模型)
+        L4(决策/分支)
+    end
+
+    PreTrain[("预训练基座模型\n(Base Model)")]
+    SFT["监督微调 / 指令微调\n(SFT / Instruction Tuning)\n📘 数据: 指令-回复对"]
+    PrefCollect["偏好数据收集\n(Preference Data Collection)\n👥 来源: 人类标注 / AI 反馈 / 规则"]
+    AlignMethods{"对齐方法选择\n(Alignment Methods)"}
+    RLHF["RLHF (PPO)\n🤖 需训练奖励模型 + 4 模型"]
+    DPO["DPO\n📊 直接偏好优化\n2 模型"]
+    GRPO["GRPO\n🧮 可验证奖励\n组相对比较"]
+    RLAIF["RLAIF / Constitutional AI\n⚖️ AI 反馈 + 宪法原则"]
+    AlignedModel[("对齐后模型\n(Aligned Model)")]
+    EvalHarness["评估框架\n(Evaluation Harness)\n🔧 工具: lm-eval / OpenCompass"]
+    BenchmarkResults["基准测试结果\n(Benchmark Results)\n📊 MMLU, GSM8K, MT-Bench..."]
+    ErrorAnalysis["错误分析与诊断\n(Error Analysis)\n🐞 数据污染检测 / 统计显著性检验"]
+    FeedbackLoop{{"反馈迭代\n(Feedback Loop)"}}
+    Finish(("部署/发布"))
+
+    PreTrain --> SFT
+    SFT --> PrefCollect
+    PrefCollect --> AlignMethods
+
+    AlignMethods --> RLHF
+    AlignMethods --> DPO
+    AlignMethods --> GRPO
+    AlignMethods --> RLAIF
+
+    RLHF --> AlignedModel
+    DPO --> AlignedModel
+    GRPO --> AlignedModel
+    RLAIF --> AlignedModel
+
+    AlignedModel --> EvalHarness
+    EvalHarness --> BenchmarkResults
+    BenchmarkResults --> ErrorAnalysis
+
+    ErrorAnalysis --> FeedbackLoop
+    FeedbackLoop -->|不达标| PrefCollect
+    FeedbackLoop -->|不达标| AlignMethods
+    FeedbackLoop -->|达标| Finish
+
+    %% 样式定义（放在最后，避免解析冲突）
+    classDef process fill:#E1F5FE,stroke:#0288D1,stroke-width:2px,color:#000
+    classDef data fill:#FFF9C4,stroke:#FBC02D,stroke-width:2px,color:#000,shape:ellipse
+    classDef decision fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px,color:#000
+    classDef startend fill:#E8F5E9,stroke:#388E3C,stroke-width:2px,color:#000
+
+    class PreTrain,AlignedModel data
+    class SFT,PrefCollect,RLHF,DPO,GRPO,RLAIF,EvalHarness,BenchmarkResults,ErrorAnalysis process
+    class AlignMethods,FeedbackLoop decision
+    class L1,L2,L3,L4,Finish startend
