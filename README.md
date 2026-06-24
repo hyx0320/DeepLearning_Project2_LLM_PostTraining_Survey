@@ -47,8 +47,8 @@
 
 | 成员 | 角色 | 负责内容 |
 |------|------|---------|
-| 胡亚鑫2023214974 | 组长 / Fine-tuning & Evaluation 负责人 | ① Fine-tuning 技术调研与报告撰写（SFT / LoRA / QLoRA / Alpaca）；② Evaluation 技术调研与报告撰写（Benchmark 体系、lm-eval 工具、统计检验）；③ 技术路线图设计（Mermaid 图表）；④ 数据格式与超参数章节；⑤ Evaluation Harness 示例命令编写与测试 |
-| 胡亚鑫2023214974 | Alignment 负责人 / 综合整合 | ① Alignment 技术调研与报告撰写（RLHF / DPO / GRPO / RLAIF / Constitutional AI）；② Method 数学推导与对比分析；③ 偏好数据集调研与整理；④ 参考文献整理与校对；⑤ 报告统稿、格式校对与 GitHub 仓库管理；⑥ 端到端管线案例分析撰写 |
+| 胡亚鑫 | 组长 / Fine-tuning & Evaluation 负责人 | ① Fine-tuning 技术调研与报告撰写（SFT / LoRA / QLoRA / Alpaca）；② Evaluation 技术调研与报告撰写（Benchmark 体系、lm-eval 工具、统计检验）；③ 技术路线图设计（Mermaid 图表）；④ 数据格式与超参数章节；⑤ Evaluation Harness 示例命令编写与测试 |
+| 赵子仪 | Alignment 负责人 / 综合整合 | ① Alignment 技术调研与报告撰写（RLHF / DPO / GRPO / RLAIF / Constitutional AI）；② Method 数学推导与对比分析；③ 偏好数据集调研与整理；④ 参考文献整理与校对；⑤ 报告统稿、格式校对与 GitHub 仓库管理；⑥ 端到端管线案例分析撰写 |
 
 ### 协作流程
 
